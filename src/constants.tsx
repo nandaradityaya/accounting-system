@@ -12,6 +12,12 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
       { title: "Reference", path: "/master/reference" },
       { title: "Doc. Numbering", path: "/master/doc-numbering" },
       { title: "Period", path: "/master/period" },
+      { title: "Account", path: "/master/account" },
+      { title: "Col. Flexible Report", path: "/master/col-flexible-report" },
+      {
+        title: "Format Flexible Report",
+        path: "/master/format-flexible-report",
+      },
     ],
   },
   {

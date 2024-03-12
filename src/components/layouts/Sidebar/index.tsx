@@ -1,100 +1,99 @@
 "use client";
 
-import React, { useState } from "react";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
-import { SIDENAV_ITEMS } from "@/constants";
-import { SideNavItem } from "@/types";
-import { Icon } from "@iconify/react";
+import React from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
-const SideNav = () => {
+const Sidebar = () => {
+  const router = useRouter();
   return (
-    <div className="md:w-60 bg-white h-screen flex-1 fixed border-r border-zinc-200 hidden md:flex">
-      <div className="flex flex-col space-y-6 w-full">
-        <Link
-          href="/"
-          className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
-        >
-          {/* <span className="h-7 w-7 bg-zinc-300 rounded-lg" /> */}
-
-          <img src="../logo.png" alt="logo" width={24} />
-          <span className="font-bold text-lg hidden md:flex">
-            General Ledger
-          </span>
-        </Link>
-
-        <div className="flex flex-col space-y-2 md:px-3 ">
-          {SIDENAV_ITEMS.map((item, idx) => {
-            return <MenuItem key={idx} item={item} />;
-          })}
+    <div className="sidebar-wrapper" data-simplebar="true">
+      <div className="sidebar-header">
+        {/* <div>
+					<img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+				</div> */}
+        <div style={{ marginLeft: 40 }}>
+          <a
+            href="dashboard.html"
+            className="logo-text"
+            style={{ fontFamily: '"Segoe UI Black"' }}
+          >
+            <span style={{ fontSize: "larger", fontStyle: "italic" }}>DCT</span>
+            <span style={{ fontSize: 15, textDecoration: "overline" }}>
+              WEB
+            </span>
+          </a>
+        </div>
+        <div className="toggle-icon ms-auto">
+          <i className="bx bx-first-page" />
         </div>
       </div>
+      {/*navigation*/}
+      <ul className="metismenu" id="menu">
+        <li className="menu-label">Menu</li>
+        <li>
+          <a href="javascript:;" className="has-arrow">
+            <div className="parent-icon">
+              <i className="bx bx-home" />
+            </div>
+            <div className="menu-title">Master</div>
+          </a>
+          <ul>
+            <li>
+              {" "}
+              <a type="button" onClick={() => router.push("/master/reference")}>
+                <i className="bx bx-right-arrow-alt" />
+                Reference
+              </a>
+            </li>
+            <li>
+              {" "}
+              <a href="index2.html">
+                <i className="bx bx-right-arrow-alt" />
+                Numbering
+              </a>
+            </li>
+            <li>
+              {" "}
+              <a href="index3.html">
+                <i className="bx bx-right-arrow-alt" />
+                eCommerce
+              </a>
+            </li>
+            <li>
+              {" "}
+              <a href="index4.html">
+                <i className="bx bx-right-arrow-alt" />
+                Periode
+              </a>
+            </li>
+            <li>
+              {" "}
+              <a href="index5.html">
+                <i className="bx bx-right-arrow-alt" />
+                Account
+              </a>
+            </li>
+            <li>
+              {" "}
+              <a href="index5.html">
+                <i className="bx bx-right-arrow-alt" />
+                Col. Flexible Report
+              </a>
+            </li>
+            <li>
+              {" "}
+              <a href="index5.html">
+                <i className="bx bx-right-arrow-alt" />
+                Format Flexible Report
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      {/*end navigation*/}
     </div>
   );
 };
 
-export default SideNav;
-
-const MenuItem = ({ item }: { item: SideNavItem }) => {
-  const pathname = usePathname();
-  const [subMenuOpen, setSubMenuOpen] = useState(false);
-  const toggleSubMenu = () => {
-    setSubMenuOpen(!subMenuOpen);
-  };
-
-  return (
-    <div className="">
-      {item.submenu ? (
-        <>
-          <Button
-            variant={"ghost"}
-            onClick={toggleSubMenu}
-            className={`flex flex-row items-center p-2 rounded-none hover-bg-zinc-100 w-full justify-between hover:text-primary hover:bg-zinc-100 ${
-              pathname.includes(item.path) ? "bg-zinc-100" : ""
-            }`}
-          >
-            <div className="flex flex-row space-x-3 items-center">
-              {item.icon}
-              <span className="flex">{item.title}</span>
-            </div>
-
-            <div className={`${subMenuOpen ? "rotate-180" : ""} flex`}>
-              <Icon icon="lucide:chevron-down" width="20" height="20" />
-            </div>
-          </Button>
-
-          {subMenuOpen && (
-            <div className="my-2 ml-12 flex flex-col space-y-4">
-              {item.subMenuItems?.map((subItem, idx) => {
-                return (
-                  <Link
-                    key={idx}
-                    href={subItem.path}
-                    className={`${
-                      subItem.path === pathname ? "font-bold" : ""
-                    }`}
-                  >
-                    <span>{subItem.title}</span>
-                  </Link>
-                );
-              })}
-            </div>
-          )}
-        </>
-      ) : (
-        <Link
-          href={item.path}
-          className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100 ${
-            item.path === pathname ? "bg-zinc-100" : ""
-          }`}
-        >
-          {item.icon}
-          <span className="font-semibold text-xl flex">{item.title}</span>
-        </Link>
-      )}
-    </div>
-  );
-};
+export default Sidebar;
