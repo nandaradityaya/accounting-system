@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -9,10 +10,15 @@ const Sidebar = () => {
   return (
     <div className="sidebar-wrapper" data-simplebar="true">
       <div className="sidebar-header">
-        {/* <div>
-					<img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-				</div> */}
-        <div style={{ marginLeft: 40 }}>
+        <div className="flex ml-2">
+          <div>
+            <Image src="/logo.png" alt="logo icon" width={28} height={28} />
+          </div>
+          <div>
+            <h6 className="text-white mt-1 ml-2">General Ledger</h6>
+          </div>
+        </div>
+        {/* <div style={{ marginLeft: 40 }}>
           <a
             href="dashboard.html"
             className="logo-text"
@@ -23,7 +29,7 @@ const Sidebar = () => {
               WEB
             </span>
           </a>
-        </div>
+        </div> */}
         <div className="toggle-icon ms-auto">
           <i className="bx bx-first-page" />
         </div>

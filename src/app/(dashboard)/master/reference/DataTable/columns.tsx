@@ -12,7 +12,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
-import DialogEdit from "../DialogEdit";
+import ButtonViewDetail from "@/components/organism/ButtonViewDetail";
+import ButtonActionTable from "@/components/organism/ButtonActionTable";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -37,34 +38,24 @@ export const columns: ColumnDef<Reference>[] = [
   },
   {
     id: "actions",
+    header: "View Detail",
     enableHiding: false,
     cell: ({ row }) => {
       const reference = row.original;
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <DotsHorizontalIcon className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(reference.id)}
-            >
-              Copy payment ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View Detail</DropdownMenuItem>
-            <DropdownMenuItem>
-              <DialogEdit />
-            </DropdownMenuItem>
-            <DropdownMenuItem>Hapus</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <ButtonViewDetail url={"/master/reference-detail/1"}></ButtonViewDetail>
       );
+    },
+  },
+  {
+    id: "actions",
+    header: "Action",
+    enableHiding: false,
+    cell: ({ row }) => {
+      const reference = row.original;
+
+      return <ButtonActionTable></ButtonActionTable>;
     },
   },
 ];

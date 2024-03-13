@@ -59,7 +59,7 @@ const Reference = async () => {
       <div className="card radius-10">
         <div className="card-body">
           <div className="d-flex align-items-center">
-            <h5 className="font-weigth-bold mb-0">List of Lookup</h5>
+            <h5 className="font-weight-bold mb-0">List of Lookup</h5>
             <div className="ms-auto">
               <DialogAddNew />
             </div>
