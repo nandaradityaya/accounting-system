@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-css-tags */
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// import "../globals.css";
+import "../globals.css";
 import "../../../public/assets/plugins/simplebar/css/simplebar.css";
 import "../../../public/assets/plugins/fullcalendar/css/main.min.css";
 import "../../../public/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css";

@@ -1,18 +1,22 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import React from "react";
 
-interface CBreadcrumbProps {
+interface CBreadCrumbProps {
   textFirst: string;
   textSecond: string;
-  textThird: string;
-  urlSecond: string;
+  textThird?: string;
+  urlSecond?: string;
 }
 
-const CBreadcrumb: React.FC<CBreadcrumbProps> = ({
+const CBreadcrumb: React.FC<CBreadCrumbProps> = ({
   textFirst,
   textSecond,
   textThird,
   urlSecond,
 }) => {
+  const router = useRouter();
   return (
     <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
       <div className="breadcrumb-title pe-3">{textFirst}</div>
@@ -20,8 +24,8 @@ const CBreadcrumb: React.FC<CBreadcrumbProps> = ({
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb mb-0 p-0">
             <li className="breadcrumb-item">
-              <a href="/">
-                <i className="bx bx-home-alt"></i>
+              <a type="button" onClick={() => router.push("/master/reference")}>
+                <i className="bx bx-home-alt text-primary"></i>
               </a>
             </li>
 

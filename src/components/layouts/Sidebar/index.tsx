@@ -2,10 +2,10 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 
 const Sidebar = () => {
   const router = useRouter();
+
   return (
     <div className="sidebar-wrapper" data-simplebar="true">
       <div className="sidebar-header">
