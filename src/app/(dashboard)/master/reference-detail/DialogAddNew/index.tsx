@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Pencil } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { addNewLookup } from "@/lib/form-schema";
@@ -31,9 +31,9 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui/textarea";
 
-interface DialogEditProps {}
+interface DialogAddNewProps {}
 
-const DialogEdit: FC<DialogEditProps> = ({}) => {
+const DialogAddNew: FC<DialogAddNewProps> = ({}) => {
   const form = useForm<z.infer<typeof addNewLookup>>({
     resolver: zodResolver(addNewLookup),
   });
@@ -76,16 +76,17 @@ const DialogEdit: FC<DialogEditProps> = ({}) => {
 
   return (
     <Dialog>
-      <DialogTrigger>
-        <a className="text-primary bg-light-primary border-0 me-3">
-          <i className="bx bxs-edit"></i>
-        </a>
+      <DialogTrigger asChild>
+        <Button>
+          <PlusIcon className="h-4 w-4 mr-2" />
+          Add New
+        </Button>
       </DialogTrigger>
       <DialogContent className="max-w-xl">
         <DialogHeader>
-          <DialogTitle>Edit Lookup</DialogTitle>
+          <DialogTitle>Add New</DialogTitle>
           <DialogDescription>
-            Change the field to edit Lookup data
+            Fill the field to add new Lookup
           </DialogDescription>
         </DialogHeader>
 
@@ -107,14 +108,69 @@ const DialogEdit: FC<DialogEditProps> = ({}) => {
                 </FormItem>
               )}
             />
+
+            <div className="grid grid-cols-4 gap-3">
+              <FormField
+                control={form.control}
+                name="value1"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Lookup Value 1</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Value..." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="value2"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Lookup Value 2</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Value..." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="value3"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Lookup Value 3</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Value..." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="value4"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Lookup Value 4</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Value..." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <FormField
               control={form.control}
-              name="description"
+              name="displayLookup"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Display Lookup</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Description..." {...field} />
+                    <Input placeholder="Display Lookup..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -131,4 +187,4 @@ const DialogEdit: FC<DialogEditProps> = ({}) => {
   );
 };
 
-export default DialogEdit;
+export default DialogAddNew;

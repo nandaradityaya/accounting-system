@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-css-tags */
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Epilogue } from "next/font/google";
 import "../globals.css";
 import "../../../public/assets/plugins/simplebar/css/simplebar.css";
 import "../../../public/assets/plugins/fullcalendar/css/main.min.css";
@@ -24,7 +24,7 @@ import Sidebar from "@/components/layouts/Sidebar";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const epilogue = Epilogue({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="color-sidebar sidebarcolor3">
-      <body className={inter.className}>
+      <body className={epilogue.className}>
         <div className="wrapper">
           <Sidebar />
           <Header />

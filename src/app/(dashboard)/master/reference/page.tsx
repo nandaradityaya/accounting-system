@@ -1,16 +1,22 @@
 import CBreadcrumb from "@/components/custom/Breadcrumb";
 import React from "react";
 import DialogAddNew from "./DialogAddNew";
-
-import { Input } from "@/components/ui/input";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 import { Reference, columns } from "./DataTable/columns";
 import { DataTable } from "./DataTable/data-table";
@@ -50,13 +56,37 @@ const Reference = async () => {
   const data = await getData();
   return (
     <>
-      <CBreadcrumb
+      {/* <CBreadcrumb
         textFirst={"Master"}
         textSecond={"Reference"}
         // textThird={""}
         urlSecond="/"
-      />
-      <div className="card radius-10">
+      /> */}
+      <Breadcrumb className="mb-3">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbPage>Reference</BreadcrumbPage>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+        </BreadcrumbList>
+      </Breadcrumb>
+
+      <Card className="w-full">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div className="">
+              <CardTitle>List of Lookup</CardTitle>
+            </div>
+            <div className="flex items-center">
+              <DialogAddNew />
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <DataTable columns={columns} data={data} />
+        </CardContent>
+      </Card>
+      {/* <div className="card radius-10">
         <div className="card-body">
           <div className="d-flex align-items-center">
             <h5 className="font-weight-bold mb-0">List of Lookup</h5>
@@ -67,7 +97,7 @@ const Reference = async () => {
 
           <DataTable columns={columns} data={data} />
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
