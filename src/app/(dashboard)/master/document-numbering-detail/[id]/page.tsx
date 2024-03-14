@@ -29,12 +29,8 @@ async function getData(): Promise<DetailLookup[]> {
   return [
     {
       id: "1",
-      lookupCode: "ACST",
-      value1: 23,
-      value2: 43,
-      value3: 64,
-      value4: 87,
-      displayLookup: "Test",
+      period: "202408",
+      lastNumber: 23,
     },
   ];
 }
@@ -47,9 +43,9 @@ const ReferenceDetail: FC<ReferenceDetailProps> = async () => {
     <>
       <BreadCrumbComponent
         textFirst={"Master"}
-        urlFirst={"/master/reference"}
-        textSecond={"Reference"}
-        urlSecond={"/master/reference"}
+        urlFirst={"/master/document-numbering"}
+        textSecond={"Document Numbering"}
+        urlSecond={"/master/document-numbering"}
         textThird={"Detail"}
       />
 
@@ -57,8 +53,8 @@ const ReferenceDetail: FC<ReferenceDetailProps> = async () => {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="">
-              <CardTitle>ACST</CardTitle>
-              <CardDescription>Type Sub Account</CardDescription>
+              <CardTitle>JNH</CardTitle>
+              <CardDescription>Journal Harian</CardDescription>
             </div>
             <div className="flex items-center">
               <DialogAddNew />

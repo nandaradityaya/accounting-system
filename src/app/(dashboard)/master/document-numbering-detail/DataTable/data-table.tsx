@@ -32,9 +32,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { RiFilter3Line } from "react-icons/ri";
 import { Button } from "@/components/ui/button";
 import React from "react";
-import { RiFilter3Line } from "react-icons/ri";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

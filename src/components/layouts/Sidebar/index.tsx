@@ -54,9 +54,12 @@ const Sidebar = () => {
             </li>
             <li>
               {" "}
-              <a href="index2.html">
+              <a
+                type="button"
+                onClick={() => router.push("/master/document-numbering")}
+              >
                 <i className="bx bx-right-arrow-alt" />
-                Numbering
+                Document Numbering
               </a>
             </li>
             <li>

@@ -9,7 +9,22 @@ export const addNewLookup = z.object({
   value2: z.number().optional(),
   value3: z.number().optional(),
   value4: z.number().optional(),
-  displayLookup: z.string({ required_error: "Linkedin is required" }),
+  displayLookup: z.string({ required_error: "Display is required" }),
+});
+
+export const addNewDocument = z.object({
+  company: z.string({ required_error: "Company is required" }),
+  code: z.string({ required_error: "code is required" }),
+  description: z.string({ required_error: "Position is required" }),
+  prefix: z.string({ required_error: "Prefix is required" }),
+  sufix: z.string({ required_error: "Sufix is required" }),
+  lengthNumber: z.number().optional(),
+  resetBy: z.string().optional(),
+});
+
+export const addNewDetailDocument = z.object({
+  period: z.string({ required_error: "Period is required" }),
+  lastNumber: z.number({ required_error: "Last is required" }),
 });
 
 export const jobFormSchema = z.object({

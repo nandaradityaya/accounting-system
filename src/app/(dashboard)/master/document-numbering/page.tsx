@@ -18,62 +18,39 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-import { Reference, columns } from "./DataTable/columns";
+import { DocumentNumbering, columns } from "./DataTable/columns";
 import { DataTable } from "./DataTable/data-table";
 import BreadCrumbComponent from "@/components/organism/Breadcrumb";
 
-async function getData(): Promise<Reference[]> {
+async function getData(): Promise<DocumentNumbering[]> {
   // Fetch data from your API here.
   return [
     {
       id: "1",
-      code: "ACST",
-      description: "Type Sub Account",
-    },
-    {
-      id: "2",
-      code: "ACTP",
-      description: "Type Account",
-    },
-    {
-      id: "3",
-      code: "BGRP",
-      description: "Bisnis Unit Grup",
-    },
-    {
-      id: "4",
-      code: "BLN",
-      description: "Nama Bulan Indonesia",
-    },
-    {
-      id: "5",
-      code: "BUNIT",
-      description: "Bisnis Unit",
+      perusahaan: "PT. Advantage SCM",
+      code: "DEPR",
+      description: "Depresiasi",
+      prefix: "DEPR",
+      sufix: "THN",
     },
   ];
 }
 
-const Reference = async () => {
+const DocumentNumbering = async () => {
   const data = await getData();
   return (
     <>
-      {/* <CBreadcrumb
-        textFirst={"Master"}
-        textSecond={"Reference"}
-        // textThird={""}
-        urlSecond="/"
-      /> */}
       <BreadCrumbComponent
         textFirst={"Master"}
-        urlFirst={"/master/reference"}
-        textSecond={"Reference"}
+        urlFirst={"/master/document-numbering"}
+        textSecond={"Document Numbering"}
       />
 
       <Card className="w-full">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="">
-              <CardTitle>List of Lookup</CardTitle>
+              <CardTitle>List of Document</CardTitle>
             </div>
             <div className="flex items-center">
               <DialogAddNew />
@@ -100,4 +77,4 @@ const Reference = async () => {
   );
 };
 
-export default Reference;
+export default DocumentNumbering;

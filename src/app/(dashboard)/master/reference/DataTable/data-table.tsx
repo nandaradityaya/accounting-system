@@ -34,6 +34,7 @@ import {
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import React from "react";
+import { RiFilter3Line } from "react-icons/ri";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -84,7 +85,8 @@ export function DataTable<TData, TValue>({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Columns <ChevronDownIcon className="ml-2 h-4 w-4" />
+              <RiFilter3Line className="mr-2 h-4 w-4" />
+              Views
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

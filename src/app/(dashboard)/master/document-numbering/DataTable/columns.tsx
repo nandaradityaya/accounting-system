@@ -7,34 +7,51 @@ import ButtonActionTable from "../ButtonActionTable";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Reference = {
+export type DocumentNumbering = {
   id: string;
+  perusahaan: string;
   code: string;
   description: string;
+  prefix: string;
+  sufix: string;
 };
 
-export const columns: ColumnDef<Reference>[] = [
+export const columns: ColumnDef<DocumentNumbering>[] = [
   {
     accessorKey: "id",
     header: "No",
   },
   {
+    accessorKey: "perusahaan",
+    header: "Perusahaan",
+  },
+  {
     accessorKey: "code",
-    header: "Code",
+    header: "Code Document",
   },
   {
     accessorKey: "description",
     header: "Description",
   },
   {
+    accessorKey: "prefix",
+    header: "Prefix",
+  },
+  {
+    accessorKey: "sufix",
+    header: "Sufix",
+  },
+  {
     id: "actions",
     header: "View Detail",
     enableHiding: false,
     cell: ({ row }) => {
-      const reference = row.original;
+      const docNumbering = row.original;
 
       return (
-        <ButtonViewDetail url={"/master/reference-detail/1"}></ButtonViewDetail>
+        <ButtonViewDetail
+          url={"/master/document-numbering-detail/1"}
+        ></ButtonViewDetail>
       );
     },
   },
@@ -43,7 +60,7 @@ export const columns: ColumnDef<Reference>[] = [
     header: "Action",
     enableHiding: false,
     cell: ({ row }) => {
-      const reference = row.original;
+      const docNumbering = row.original;
 
       return <ButtonActionTable></ButtonActionTable>;
     },
