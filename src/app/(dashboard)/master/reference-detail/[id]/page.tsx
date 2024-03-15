@@ -1,5 +1,5 @@
 import CBreadcrumb from "@/components/custom/Breadcrumb";
-import React, { FC } from "react";
+import React, { FC, Suspense } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -23,6 +23,7 @@ import { DetailLookup } from "../DataTable/columns";
 import { columns } from "../DataTable/columns";
 import { DataTable } from "../DataTable/data-table";
 import BreadCrumbComponent from "@/components/organism/Breadcrumb";
+import Loading from "@/components/organism/Loading";
 
 async function getData(): Promise<DetailLookup[]> {
   // Fetch data from your API here.
@@ -45,30 +46,32 @@ const ReferenceDetail: FC<ReferenceDetailProps> = async () => {
   const data = await getData();
   return (
     <>
-      <BreadCrumbComponent
-        textFirst={"Master"}
-        urlFirst={"/master/reference"}
-        textSecond={"Reference"}
-        urlSecond={"/master/reference"}
-        textThird={"Detail"}
-      />
+      <Suspense fallback={<Loading />}>
+        <BreadCrumbComponent
+          textFirst={"Master"}
+          urlFirst={"/master/reference"}
+          textSecond={"Reference"}
+          urlSecond={"/master/reference"}
+          textThird={"Detail"}
+        />
 
-      <Card className="w-full">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div className="">
-              <CardTitle>ACST</CardTitle>
-              <CardDescription>Type Sub Account</CardDescription>
+        <Card className="w-full">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div className="">
+                <CardTitle>ACST</CardTitle>
+                <CardDescription>Type Sub Account</CardDescription>
+              </div>
+              <div className="flex items-center">
+                <DialogAddNew />
+              </div>
             </div>
-            <div className="flex items-center">
-              <DialogAddNew />
-            </div>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <DataTable columns={columns} data={data} />
-        </CardContent>
-      </Card>
+          </CardHeader>
+          <CardContent>
+            <DataTable columns={columns} data={data} />
+          </CardContent>
+        </Card>
+      </Suspense>
     </>
   );
 };

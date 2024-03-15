@@ -64,16 +64,9 @@ const Sidebar = () => {
             </li>
             <li>
               {" "}
-              <a href="index3.html">
+              <a type="button" onClick={() => router.push("/master/period")}>
                 <i className="bx bx-right-arrow-alt" />
-                eCommerce
-              </a>
-            </li>
-            <li>
-              {" "}
-              <a href="index4.html">
-                <i className="bx bx-right-arrow-alt" />
-                Periode
+                Period
               </a>
             </li>
             <li>

@@ -32,9 +32,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { RiFilter3Line } from "react-icons/ri";
 import { Button } from "@/components/ui/button";
 import React from "react";
+import { RiFilter3Line } from "react-icons/ri";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -75,10 +75,10 @@ export function DataTable<TData, TValue>({
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Search period..."
-          value={(table.getColumn("period")?.getFilterValue() as string) ?? ""}
+          placeholder="Search Company..."
+          value={(table.getColumn("company")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("period")?.setFilterValue(event.target.value)
+            table.getColumn("company")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

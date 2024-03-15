@@ -27,6 +27,17 @@ export const addNewDetailDocument = z.object({
   lastNumber: z.number({ required_error: "Last is required" }),
 });
 
+export const addNewPeriod = z.object({
+  company: z.string({ required_error: "Company is required" }),
+  fiskalYear: z.number({ required_error: "Fiskal Year is required" }),
+  period: z.string({ required_error: "Period is required" }),
+  noPeriod: z.number({ required_error: "No. Period is required" }),
+  startDate: z.date({ required_error: "Date is required" }),
+  endDate: z.date({ required_error: "Date is required" }),
+  status: z.string({ required_error: "Date is required" }),
+  statusFiskal: z.string({ required_error: "Date is required" }),
+});
+
 export const jobFormSchema = z.object({
   roles: z
     .string({ required_error: "Job Title is required" })
